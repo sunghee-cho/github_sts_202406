@@ -7,6 +7,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HelloBootController {
+	@RequestMapping("/lomboktest") //../lomboktest?id=100&name=spring
+	ModelAndView lomboktest(HelloDTO dto){
+		dto.setName(dto.getName()+"님");
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("model",dto );
+		mv.setViewName("lombok"); 
+		//  WEB-INF/views/lombok.jsp  - ${model.toString()자동호출} 출력
+		return mv;
+	}
+	//http://localhost:9090/lomboktest?id=100&name=spring
+	
 	@RequestMapping("/helloboot")
 	ModelAndView helloboot(){
 		ModelAndView mv = new ModelAndView();
